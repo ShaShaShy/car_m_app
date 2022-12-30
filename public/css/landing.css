@@ -1,0 +1,124 @@
+body{
+	background-color: #495579;
+}
+
+.input {
+  width: 290px;
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label {
+  display: block;
+  margin-bottom: .6rem;
+  font-size: .9rem;
+  font-weight: bold;
+  color: #05060f99;
+  transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input:hover, .input:focus, .input-group:hover .input {
+  outline: none;
+  border-color: #05060f;
+}
+
+.input-group:hover .label, .input:focus {
+  color: #05060fc2;
+}
+
+.myForm{
+	padding: 3%;
+	font-family: 'Poppins',sans-serif;
+	text-align: center;
+	margin-right: 2%;
+	margin-bottom: 5%;
+	background-color: #EDEDED;
+	width: 380px;
+	border-radius: 15px;
+	float: left;
+}
+
+.myForm-2{
+	padding: 5%;
+	font-family: 'Poppins',sans-serif;
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	background-color: #EDEDED;
+	width: 380px;
+	border-radius: 15px;
+}
+
+.submitbtn{
+	font-family: 'Poppins',cursive;
+
+	width: 175px;
+	height: 40px;
+}
+
+.submitbtn:hover{
+	opacity: 0.9;
+}
+
+h1{
+	text-align: center;
+	font-family: 'Rubik Vinyl',cursive;
+	color: whitesmoke;
+}
+
+.log-intro h1{
+	margin: 1%;
+	text-align: center;
+	font-family: 'Rubik Vinyl',cursive;
+	font-size: 65px;
+	color: whitesmoke;
+}
+
+p{
+	font-family: 'Poppins',sans-serif;
+	color: whitesmoke;
+	padding-right: 5%;
+}
+
+a{
+	text-decoration: none;
+	color: grey;
+}
+
+.entireForm{
+	display: block;
+	margin-left: 10%;
+}
+
+.custom-shape-divider-bottom-1671442185 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1671442185 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 159px;
+
+}
+
+.custom-shape-divider-bottom-1671442185 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.swal-text {
+  text-align: center;
+  
+  font-weight: bold;
+}
