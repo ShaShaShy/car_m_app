@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CarController;
 use App\models\CarFunction;
 use App\models\Rents;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,10 +24,13 @@ Route::get('/AdminDashboard', [CarController::class, 'Admin'])->name('Admin');
 });
 
 
-
-
 Route::get('/', function () {
-    return view('welcome', ['carData' => CarFunction::all()] , ['userRents' => Rents::all()]);
+    if (Auth::check()){
+        $user_name = Auth::user()->name;
+        return view('welcome', ['carData' => CarFunction::all()] , ['userRents' => Rents::where('client_name',$user_name)->get()]);
+    }else{
+        return view('welcome', ['carData' => CarFunction::all()] , ['userRents' => Rents::all()]);
+    }
 });
 
 

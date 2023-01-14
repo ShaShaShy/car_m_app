@@ -56,10 +56,10 @@
           <a class="nav-link" data-bs-toggle="modal" href="#transactionModal">My Transactions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Rents</a>
+          <a class="nav-link" href="#">Rented Cars</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">My Cart</a>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">My Cart</a>
         </li>
         @else
         @endauth
@@ -96,6 +96,7 @@
 </div>
 
 @foreach($carData as $data)
+
 <div class="card ">
 <div class="card-img"></div>
   <div class="card-info">
@@ -121,7 +122,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
+      <h5 class="text-center">Rate Car</h5>
+      <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
     <div class="forRent">
     <img src="{{ url('uploads/'.$data->img_path) }}" style="width:450px; display:block; margin: 0 auto;">
     <p class="text-subtitle text-center">{{ $data->car_desc }}
@@ -138,6 +141,7 @@
       <div class="modal-footer">
       @if (Route::has('login'))
        @auth
+       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#cartModal">Add to Cart</button>
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">Rent Car</button>
         @else
         <a href="{{ route('login') }}" ><button type="button" class="btn btn-dark">Rent Car</button></a>
@@ -147,6 +151,9 @@
     </div>
   </div>
 </div>
+
+
+
 @endforeach
 
 @if (Route::has('login'))
@@ -156,7 +163,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">My Transactions</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">My Transaction History</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -185,6 +192,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!--CART MODAL -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">My Cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Rent All</button>
+      </div>
+      
     </div>
   </div>
 </div>
@@ -234,6 +262,8 @@
     </div>
   </div>
 </div>
+
+
 @endauth
         @endif
 

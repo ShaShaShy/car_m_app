@@ -10,7 +10,7 @@ use App\models\Rents;
 class CarController extends Controller
 {
     public function Admin(){
-        return view('/admin/AdminDashboard', ['carData' => CarFunction::paginate(6)]);
+        return view('/admin/AdminDashboard', ['carData' => CarFunction::paginate(6)], ['userRents' => Rents::all()]);
     }
 
     public function dashboard(){

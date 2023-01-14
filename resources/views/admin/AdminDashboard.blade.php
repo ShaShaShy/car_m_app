@@ -13,6 +13,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -60,8 +61,8 @@
 </nav>
 
 <div class="sidebar bg-dark text-center">
-  <a href="#"><i class="fa fa-history" style="font-size:18px; color:whitesmoke;"></i> &nbsp;Rented Cars</a>
-  <a href="#news"><i class="fa fa-history" style="font-size:18px; color:whitesmoke;"></i> &nbsp;History</a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#rentedModal"><i class="fa fa-history" style="font-size:18px; color:whitesmoke;"></i> &nbsp;Rented Cars</a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#transactionModal"><i class="fa fa-history" style="font-size:18px; color:whitesmoke;"></i> &nbsp;Transactions</a>
   <a href="#contact"><i class="fa fa-handshake-o" style="font-size:18px; color:whitesmoke;"></i> &nbsp;User Inquery</a>
 </div>
 <br><br>
@@ -152,7 +153,78 @@
   </div>
 </div>
 
+<div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">List of Transaction and Payments</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
+      <table class="table">
+      <thead>
+      <th scope="col">My Name</th>
+      <th scope="col">Car Name</th>
+      <th scope="col">Rent</th>
+      <th scope="col">Rent Date</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Status</th>
+      @foreach ($userRents as $data)
+    <tr>   
+      <td>{{ $data -> client_name }}</td>
+      <td>{{ $data -> car_name }}</td>
+      <td>{{ $data -> rent }}</td>
+      <td>{{ $data -> rent_date }}</td>
+      <td>{{ $data -> due_date }}</td>
+      <td style="color:red; font-weight:bold;">PAID</td>
+    </tr>
+
+  @endforeach
+      </tbody>
+  </table>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="rentedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Frequently Rented Cars</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      <table class="table text-center">
+      <thead>
+      
+      <th scope="col">Car Name</th>
+      <th scope="col">Last Rented</th>
+      @foreach ($userRents as $data)
+    <tr>   
+      <td>{{ $data -> car_name }}</td>
+      <td>{{ $data -> rent_date }}</td>
+    </tr>
+
+  @endforeach
+      </tbody>
+  </table>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 	<!-- JavaScript Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
